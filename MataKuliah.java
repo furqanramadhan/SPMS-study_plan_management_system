@@ -1,5 +1,4 @@
 import java.util.Date;
-import Dosen;
 
 public class MataKuliah{
     private String kodeMK;
@@ -41,7 +40,7 @@ public class MataKuliah{
         this.hari = hari;
     }
 
-    public void setWaktu(LocalDate waktu){
+    public void setWaktu(Date waktu){
         this.waktu = waktu;
     }
 
@@ -73,7 +72,7 @@ public class MataKuliah{
         return hari;
     }
 
-    public LocalDate getWaktu(){
+    public Date getWaktu(){
         return waktu;
     }
 

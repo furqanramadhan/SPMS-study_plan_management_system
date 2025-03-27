@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import MataKuliah.MataKuliah;
-import Mahasiswa;
 
 public class KRS{
     private Mahasiswa mahasiswa;
@@ -19,13 +17,7 @@ public class KRS{
         mataKuliah.remove(index);
     }
 
-    public void toString(){
-        System.out.println("KRS Mahasiswa");
-        System.out.println("NIM: " + mahasiswa.getNim());
-        System.out.println("Nama: " + mahasiswa.getNama());
-        System.out.println("Mata Kuliah yang diambil:");
-        for(int i = 0; i < jumlahMK; i++){
-            System.out.println(mataKuliah[i].getKodeMK() + " - " + mataKuliah[i].getNamaMK());
-        }
+    public String toString(){
+        return "KRS Mahasiswa " + mahasiswa.getNpm() + " " + mahasiswa.getNama() + " Semester " + semester;
     }
 }
