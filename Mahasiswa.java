@@ -60,6 +60,4 @@ public class Mahasiswa {
         int semester = (tahunSekarang - tahunMasuk) * 2; // 1 tahun = 2 semester
         return Math.max(semester, 1); // Minimal semester 1 jika ada kesalahan input
     }
-
-
 }

@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class Dosen {
     private String nip;
     private String nama;
