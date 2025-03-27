@@ -4,4 +4,6 @@ public class MahasiswaManager {
     public MahasiswaManager(Mahasiswa mahasiswa) {
         this.dataMahasiswa = mahasiswa;
     }
+
+    //TODO : Add in interface
 }
