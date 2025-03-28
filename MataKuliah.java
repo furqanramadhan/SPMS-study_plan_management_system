@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class MataKuliah{
+public class MataKuliah {
     private String kodeMK;
     private String namaMK;
     private String kelasMK;
