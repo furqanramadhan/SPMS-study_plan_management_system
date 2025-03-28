@@ -1,9 +1,9 @@
-public class MahasiswaManager {
-    private Mahasiswa dataMahasiswa;
-    // Constructor
-    public MahasiswaManager(Mahasiswa mahasiswa) {
-        this.dataMahasiswa = mahasiswa;
-    }
+import java.util.ArrayList;
 
-    //TODO : Add in interface
+public class MahasiswaManager{
+    private ArrayList<Mahasiswa> listMahasiswa = new ArrayList<Mahasiswa>();
+
+    public MahasiswaManager(){
+        
+    }
 }
