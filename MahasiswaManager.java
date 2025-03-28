@@ -4,6 +4,15 @@ import java.util.Date;
 public class MahasiswaManager implements IManagementMahasiswa{
     private ArrayList<Mahasiswa> listMahasiswa = new ArrayList<Mahasiswa>();
 
+    public Mahasiswa getMahasiswa(String npm){
+        for (Mahasiswa mahasiswa : listMahasiswa) {
+            if (mahasiswa.getNpm().equals(npm)) {
+                return mahasiswa;
+            }
+        }
+        return null;
+    }
+
     @Override
     public ArrayList<Mahasiswa> getListMahasiswa(){
         return listMahasiswa;

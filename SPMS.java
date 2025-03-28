@@ -35,11 +35,11 @@ public class SPMS{
                 adminManager.showMenu();
                 break;
             case 2:
-                // System.out.print("Input NPM: ");
-                // String npm = scanner.nextLine();
-                // Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(npm);
-                // krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
-                // krsMahasiswaManager.showMenu();
+                System.out.print("Input NPM: ");
+                String npm = scanner.nextLine();
+                Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(npm);
+                krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
+                krsMahasiswaManager.showMenu();
                 break;
             case 3:
                 // System.out.print("Input NIP: ");

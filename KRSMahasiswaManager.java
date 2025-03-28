@@ -7,6 +7,10 @@ public class KRSMahasiswaManager implements IMahasiswa {
         this.dataMahasiswa = mahasiswa;
     }
 
+    public void showMenu(){
+        // TODO: Implement this method
+    }
+
     @Override
     public ArrayList<MataKuliah> getMataKuliah(){
         ArrayList<MataKuliah> result = new ArrayList<MataKuliah>();

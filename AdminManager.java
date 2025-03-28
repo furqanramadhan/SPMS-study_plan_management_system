@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class AdminManager implements IAdmin{
+    private IManagementMK managementMK = new MataKuliahManager();
+    private IManagementMahasiswa managementMahasiswa = new MahasiswaManager();
+    private IManagementDosen managementDosen = new DosenManager();
+    private IManagementPerwalian managementPerwalian = new PerwalianManager();
 
     public void showMenu(){
         System.out.println("1. Lihat Daftar Mahasiswa");
@@ -32,9 +36,7 @@ public class AdminManager implements IAdmin{
 
     @Override
     public ArrayList<MataKuliah> getListMK(){
-        ArrayList<MataKuliah> result = new ArrayList<MataKuliah>();
-        // TODO: Implement this method
-        return result;
+        return managementMK.getListMK();
     };
 
     @Override
