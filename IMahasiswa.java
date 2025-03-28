@@ -1,8 +1,7 @@
-import java.util.LinkedList;
-public interface IMahasiswa {
-    // TODO: buat method dapatkan status pengajuan
-    // void getStatusPengajuan(Dosen dosen);
-    LinkedList<MataKuliah> getMataKuliah();
-    LinkedList<KRS> getKRS();
-    void ajukanKRS(int semester, LinkedList<MataKuliah> listMK);
+import java.util.ArrayList;
+
+interface IMahasiswa {
+    public ArrayList<MataKuliah> getMataKuliah();
+    public ArrayList<KRS> getKRS();
+    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK);    
 }
