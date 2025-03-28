@@ -1,5 +1,4 @@
+import java.util.ArrayList;
 interface ISubmitKRS {
-    public KRS getKRS(Mahasiswa mahasiswa);
-    public void updateKRS(KRS krs);
-    // TODO: Implements in manager
+    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK);
 }
