@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MataKuliahManager implements IListMK, IUpdatePeserta, IManagementMK{
-    private Map<String, MataKuliah> listMK;
+    static Map<String, MataKuliah> listMK;
 
     public MataKuliahManager(){
         listMK = new HashMap<String, MataKuliah>();

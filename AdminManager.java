@@ -3,6 +3,33 @@ import java.util.Date;
 
 public class AdminManager implements IAdmin{
 
+    public void showMenu(){
+        System.out.println("1. Lihat Daftar Mahasiswa");
+        System.out.println("2. Lihat Daftar Dosen");
+        System.out.println("3. Lihat Daftar Mata Kuliah");
+        System.out.println("4. Lihat Perwalian");
+
+        System.out.println("5. Tambah Mahasiswa");
+        System.out.println("6. Update Mahasiswa");
+        System.out.println("7. Hapus Mahasiswa");
+
+        System.out.println("8. Tambah Dosen");
+        System.out.println("9. Update Dosen");
+        System.out.println("10. Hapus Dosen");        
+        
+        System.out.println("11. Tambah Mata Kuliah");
+        System.out.println("12. Update Mata Kuliah");
+        System.out.println("13. Hapus Mata Kuliah");    
+
+        System.out.println("14. Tambah Perwalian");
+        System.out.println("15. Update Perwalian");
+        System.out.println("16. Hapus Perwalian");    
+
+        System.out.println("17. Update KRS");
+        System.out.println("18. Lihat KRS");
+        System.out.println("19. Keluar");
+    }
+
     @Override
     public ArrayList<MataKuliah> getListMK(){
         ArrayList<MataKuliah> result = new ArrayList<MataKuliah>();
