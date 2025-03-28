@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class KRSManager implements IManagementKRS{
+public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
     private ArrayList<KRS> listKRS;
 
     public KRSManager(){
@@ -26,6 +26,28 @@ public class KRSManager implements IManagementKRS{
 
     @Override
     public void updateKRS(KRS krs){
+        // TODO: Implement this method
+    }
+
+    @Override
+    public ArrayList<KRS> getPengajuan(ArrayList<Mahasiswa> mahasiswa){
+        ArrayList<KRS> result = new ArrayList<KRS>();
+        // TODO: Implement this method
+        return result;
+    }
+
+    @Override
+    public void acceptPengajuan(Mahasiswa mahasiswa){
+        // TODO: Implement this method
+    }
+
+    @Override
+    public void rejectPengajuan(Mahasiswa mahasiswa){
+        // TODO: Implement this method
+    }
+
+    @Override
+    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK){
         // TODO: Implement this method
     }
 }

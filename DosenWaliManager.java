@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DosenWaliManager {
+public class DosenWaliManager implements IDosenWali {
     private Dosen dosen;
     private ArrayList<Mahasiswa> perwalian;
 
@@ -9,5 +9,10 @@ public class DosenWaliManager {
         this.perwalian = perwalian;
     }
 
-    //TODO : Implements in interface add later
+    @Override
+    public ArrayList<KRS> getStatusPengajuan(Dosen dosen){
+        ArrayList<KRS> result = new ArrayList<KRS>();
+        // TODO: Implement this method
+        return result;
+    }
 }
