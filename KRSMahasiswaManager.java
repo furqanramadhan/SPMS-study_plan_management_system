@@ -8,11 +8,14 @@ public class KRSMahasiswaManager implements IMahasiswa {
     }
 
     public void showMenu(){
-        // TODO: Implement this method
+        System.out.println("Menu KRS Mahasiswa: ");
+        System.out.println("1. Lihat KRS");
+        System.out.println("2. Lihat Mata Kuliah");
+        System.out.println("3. Ajukan KRS");
     }
 
     @Override
-    public ArrayList<MataKuliah> getMataKuliah(){
+    public ArrayList<MataKuliah> getMataKuliah() {
         ArrayList<MataKuliah> result = new ArrayList<MataKuliah>();
         // TODO: Implement this method
         return result;
@@ -26,7 +29,20 @@ public class KRSMahasiswaManager implements IMahasiswa {
     }
 
     @Override
-    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK){
+    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK) {
         // TODO: Implement this method
+        if (listMK == null || listMK.isEmpty()) {
+            System.out.println("Daftar Mata Kuliah tidak boleh kosong. Silakan pilih mata kuliah yang ingin diajukan.");
+            return;
+        } else {
+            // Confirmation message with mahasiswa details
+            System.out.println("KRS berhasil diajukan untuk mahasiswa: " + dataMahasiswa.getNama() +" (NPM: " + dataMahasiswa.getNpm() + ") pada semester " + semester);
+            System.out.println("Mata Kuliah yang diajukan:");
+            System.out.println("KRS untuk semester " + semester + " telah diajukan dengan kode dan mata kuliah:");
+            for (MataKuliah mk : listMK) {
+                System.out.println("- " + mk.getKodeMK() + ": " + mk.getNamaMK());
+            }
+        }
     }
+
 }
