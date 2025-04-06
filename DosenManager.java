@@ -10,16 +10,27 @@ public class DosenManager implements IManagementDosen{
 
     @Override
     public void updateDosen(Dosen dosen){
-        // TODO: Implement this method
+        for (int i = 0; i < listDosen.size(); i++) {
+            if (listDosen.get(i).getNip().equals(dosen.getNip())) {
+                listDosen.set(i, dosen);
+                break;
+            }
+        }
     }
 
     @Override
     public void deleteDosen(String nip){
-        // TODO: Implement this method
+        for (int i = 0; i < listDosen.size(); i++) {
+            if (listDosen.get(i).getNip().equals(nip)) {
+                listDosen.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
     public void addDosen(String nip, String nama, char jenisKelamin){
-        // TODO: Implement this method
+        Dosen dosen = new Dosen(nip, nama, jenisKelamin);
+        listDosen.add(dosen);
     }
 }

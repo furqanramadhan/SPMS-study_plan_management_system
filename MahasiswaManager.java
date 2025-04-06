@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MahasiswaManager implements IManagementMahasiswa{
-    private ArrayList<Mahasiswa> listMahasiswa = new ArrayList<Mahasiswa>();
+    private static ArrayList<Mahasiswa> listMahasiswa = new ArrayList<Mahasiswa>();
 
     public Mahasiswa getMahasiswa(String npm){
         for (Mahasiswa mahasiswa : listMahasiswa) {
@@ -20,16 +20,27 @@ public class MahasiswaManager implements IManagementMahasiswa{
 
     @Override
     public void updateMahasiswa(Mahasiswa mahasiswa){
-        // TODO: Implement this method
+        for (int i = 0; i < listMahasiswa.size(); i++) {
+            if (listMahasiswa.get(i).getNpm().equals(mahasiswa.getNpm())) {
+                listMahasiswa.set(i, mahasiswa);
+                break;
+            }
+        }
     }
 
     @Override
     public void deleteMahasiswa(String npm){
-        // TODO: Implement this method
+        for (int i = 0; i < listMahasiswa.size(); i++) {
+            if (listMahasiswa.get(i).getNpm().equals(npm)) {
+                listMahasiswa.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
     public void addMahasiswa(String npm, String nama, char jenisKelamin, Date tanggalMasuk){
-        // TODO: Implement this method
+        Mahasiswa mahasiswa = new Mahasiswa(npm, nama, jenisKelamin, tanggalMasuk);
+        listMahasiswa.add(mahasiswa);
     }
 }

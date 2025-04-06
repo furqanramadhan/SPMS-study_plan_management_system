@@ -1,5 +1,5 @@
 import java.util.ArrayList;
 
 interface IListPerwalian {
-    public ArrayList<Mahasiswa> getListPerwalian(Dosen dosen);
+    public ArrayList<String> getListPerwalian(Dosen dosen);
 }

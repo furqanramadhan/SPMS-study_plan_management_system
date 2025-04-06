@@ -5,5 +5,5 @@ interface IManagementMK {
     public ArrayList<MataKuliah> getListMK();
     public void updateMK(MataKuliah mataKuliah);
     public void deleteMK(String kodeMK);
-    public void addMK(String kodeMK, String namaMK, String kelasMK, String dosen, String ruang, String hari, Date waktu, int sks);
+    public void addMK(String kodeMK, String namaMK, String kelasMK, Dosen dosen, String ruang, String hari, Date waktu, int sks);
 }

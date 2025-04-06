@@ -9,11 +9,13 @@ public class MataKuliah {
     private String hari;
     private Date waktu;
     private int sks;
+    private int peserta;
 
     public MataKuliah(String kodeMK, String namaMK, int sks){
         this.kodeMK = kodeMK;
         this.namaMK = namaMK;
         this.sks = sks;
+        this.peserta = 0;
     }
 
     public void setKodeMK(String kodeMK){
@@ -78,6 +80,18 @@ public class MataKuliah {
 
     public int getSks(){
         return sks;
+    }
+
+    public int getPeserta(){
+        return peserta;
+    }
+
+    public void addPeserta(){
+        this.peserta++;
+    }
+    
+    public void removePeserta(){
+        this.peserta--;
     }
 
     public String toString(){

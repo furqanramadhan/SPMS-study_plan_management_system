@@ -3,32 +3,42 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class PerwalianManager implements IListPerwalian, IManagementPerwalian {
-    private Map<Mahasiswa, Dosen> listPerwalian = new HashMap<Mahasiswa, Dosen>();
+    private Map<String, Dosen> listPerwalian = new HashMap<String, Dosen>();
 
     @Override
-    public ArrayList<Mahasiswa> getListPerwalian(Dosen dosen){
-        ArrayList<Mahasiswa> result = new ArrayList<Mahasiswa>();
-        // TODO: Implement this method
+    public ArrayList<String> getListPerwalian(Dosen dosen){
+        ArrayList<String> result = new ArrayList<String>();
+        
+        for (Map.Entry<String, Dosen> entry : listPerwalian.entrySet()) {
+            if (entry.getValue().equals(dosen)) {
+                result.add(entry.getKey());
+            }
+        }
+
         return result;
     }
 
     @Override
-    public Map<Mahasiswa, Dosen> getListperwalian(){
+    public Map<String, Dosen> getListAllPerwalian(){
         return listPerwalian;
     }
 
     @Override
     public void updatePerwalian(Mahasiswa mahasiswa, Dosen dosen){
-        // TODO: Implement this method
+        if (listPerwalian.containsKey(mahasiswa.getNpm())) {
+            listPerwalian.put(mahasiswa.getNpm(), dosen);
+        } else {
+            System.out.println("Mahasiswa tidak terdaftar dalam perwalian.");
+        }
     }
 
     @Override
     public void deletePerwalian(Mahasiswa mahasiswa){
-        // TODO: Implement this method
+        listPerwalian.remove(mahasiswa.getNpm());
     }
 
     @Override
     public void addPerwalian(Mahasiswa mahasiswa, Dosen dosen){
-        // TODO: Implement this method
+        listPerwalian.put(mahasiswa.getNpm(), dosen);
     }
 };
