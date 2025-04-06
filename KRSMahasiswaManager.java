@@ -44,7 +44,7 @@ public class KRSMahasiswaManager implements IMahasiswa {
 
     @Override
     public ArrayList<MataKuliah> getMataKuliah() {
-        ArrayList<MataKuliah> result = mataKuliahManager.getListMK();
+        ArrayList<MataKuliah> result = mataKuliahManager.getListMKMahasiswa();
         if (result.isEmpty()) {
             System.out.println("Tidak ada daftar mata kuliah yang tersedia.");
         } else {

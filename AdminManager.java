@@ -95,9 +95,10 @@ public class AdminManager implements IAdmin {
                         for (MataKuliah mataKuliah : this.getListMK()) {
                             System.out.println(mataKuliah);
                         }
-                    } catch (NullPointerException e) {
+                    } catch (Exception e) {
                         System.out.println("=====================");
                         System.out.println("Data Mata Kuliah Kosong");
+                        e.printStackTrace();
                     }
                     break;
                 case 4:

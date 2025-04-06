@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MataKuliahManager implements IListMK, IUpdatePeserta, IManagementMK{
-    private static Map<String, MataKuliah> listMK;
-
-    public MataKuliahManager(){
-        listMK = new HashMap<String, MataKuliah>();
-    }
+    private static Map<String, MataKuliah> listMK = new HashMap<String, MataKuliah>();
 
     @Override
     public ArrayList<MataKuliah> getListMK(){
@@ -72,6 +68,15 @@ public class MataKuliahManager implements IListMK, IUpdatePeserta, IManagementMK
             System.out.println("Mata Kuliah tidak ditemukan");
             return null;
         }
+    }
+
+    @Override
+    public ArrayList<MataKuliah> getListMKMahasiswa() {
+        ArrayList<MataKuliah> list = new ArrayList<MataKuliah>();
+        for (Map.Entry<String, MataKuliah> entry : listMK.entrySet()) {
+            list.add(entry.getValue());
+        }
+        return list;
     };
 
 }

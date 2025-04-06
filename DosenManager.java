@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class DosenManager implements IManagementDosen{
-    private ArrayList<Dosen> listDosen = new ArrayList<Dosen>();
+    private static ArrayList<Dosen> listDosen = new ArrayList<Dosen>();
 
     @Override
     public ArrayList<Dosen> getListDosen(){
