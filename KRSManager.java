@@ -82,15 +82,13 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             }
         }
     }
-
+    
     @Override
-    public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK) {
-        // Assuming the current Mahasiswa is available (e.g., via a session or parameter)
-        Mahasiswa currentMahasiswa = getCurrentMahasiswa(); // Replace with actual logic
-        KRS newKRS = new KRS(currentMahasiswa, semester);
+    public void ajukanKRS(Mahasiswa mahasiswa, int semester, ArrayList<MataKuliah> listMK) {
+        KRS newKRS = new KRS(mahasiswa, semester);
         for (MataKuliah mk : listMK) {
             newKRS.tambahMataKuliah(mk);
         }
-        updateKRS(newKRS); // Add or update the KRS in the list
+        updateKRS(newKRS);
     }
 }
