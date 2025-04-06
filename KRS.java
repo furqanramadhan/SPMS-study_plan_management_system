@@ -39,6 +39,14 @@ public class KRS{
     }
 
     public String toString(){
-        return "KRS Mahasiswa " + mahasiswa.getNpm() + " " + mahasiswa.getNama() + " Semester " + semester;
+        System.out.println("====================");
+        System.out.println("Kartu Rencana Studi");
+        System.out.println("====================");
+        System.out.println("Mahasiswa " + mahasiswa.getNpm() + " " + mahasiswa.getNama() + " Semester " + semester + " " + (status ? "Disetujui" : "Belum Disetujui"));
+        System.out.println("Mata Kuliah yang diambil:");
+        for (MataKuliah mk : mataKuliah) {
+            System.out.println(mk.toString());
+        }
+        return "KRS Mahasiswa " + mahasiswa.getNpm() + " " + mahasiswa.getNama() + " Semester " + semester + " " + status;
     }
 }

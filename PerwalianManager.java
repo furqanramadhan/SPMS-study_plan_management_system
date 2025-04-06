@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class PerwalianManager implements IListPerwalian, IManagementPerwalian {
     private Map<String, Dosen> listPerwalian = new HashMap<String, Dosen>();
+    IManagementMahasiswa mahasiswaManager = new MahasiswaManager();
 
     @Override
-    public ArrayList<String> getListPerwalian(Dosen dosen){
-        ArrayList<String> result = new ArrayList<String>();
+    public ArrayList<Mahasiswa> getListPerwalian(Dosen dosen){
+        ArrayList<Mahasiswa> result = new ArrayList<Mahasiswa>();
         
         for (Map.Entry<String, Dosen> entry : listPerwalian.entrySet()) {
             if (entry.getValue().equals(dosen)) {
-                result.add(entry.getKey());
+                Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(entry.getKey());
+                result.add(mahasiswa);
             }
         }
 
@@ -19,8 +21,15 @@ public class PerwalianManager implements IListPerwalian, IManagementPerwalian {
     }
 
     @Override
-    public Map<String, Dosen> getListAllPerwalian(){
-        return listPerwalian;
+    public Map<Mahasiswa, Dosen> getListAllPerwalian(){
+        Map<Mahasiswa, Dosen> result = new HashMap<Mahasiswa, Dosen>();
+        
+        for (Map.Entry<String, Dosen> entry : listPerwalian.entrySet()) {
+            Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(entry.getKey());
+            result.put(mahasiswa, entry.getValue());
+        }
+
+        return result;
     }
 
     @Override

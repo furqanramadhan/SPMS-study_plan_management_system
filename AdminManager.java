@@ -110,7 +110,7 @@ public class AdminManager implements IAdmin {
                         System.out.println("=====================");
                         System.out.println("Daftar Perwalian");
                         System.out.println("=====================");
-                        for (Entry<String, Dosen> entry : this.getListAllPerwalian().entrySet()) {
+                        for (Entry<Mahasiswa, Dosen> entry : this.getListAllPerwalian().entrySet()) {
                             System.out.println(entry.getKey() + " - " + entry.getValue());
                         }
                     } catch (NullPointerException e) {
@@ -484,26 +484,35 @@ public class AdminManager implements IAdmin {
     }
 
     @Override
-    public Map<String, Dosen> getListAllPerwalian() {
+    public Map<Mahasiswa, Dosen> getListAllPerwalian() {
         return managementPerwalian.getListAllPerwalian();
     }
 
     @Override
-    public void updatePerwalian(Map<Mahasiswa, Dosen> perwalian) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updatePerwalian'");
+    public void updatePerwalian(Mahasiswa mahasiswa, Dosen dosen) {
+        try {
+            managementPerwalian.updatePerwalian(mahasiswa, dosen);
+        } catch (Exception e) {
+            System.out.println("Gagal mengupdate perwalian: " + e.getMessage());
+        }
     }
 
     @Override
-    public void deletePerwalian(String npm, String kodeMK) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePerwalian'");
+    public void deletePerwalian(Mahasiswa mahasiswa) {
+        try {
+            managementPerwalian.deletePerwalian(mahasiswa);
+        } catch (Exception e) {
+            System.out.println("Gagal menghapus perwalian: " + e.getMessage());
+        }
     }
 
     @Override
     public void addPerwalian(Mahasiswa mahasiswa, Dosen dosen) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPerwalian'");
+        try {
+            managementPerwalian.addPerwalian(mahasiswa, dosen);
+        } catch (Exception e) {
+            System.out.println("Gagal menambahkan perwalian: " + e.getMessage());
+        }
     };
 
 }

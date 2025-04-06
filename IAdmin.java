@@ -26,8 +26,8 @@ interface IAdmin {
     public void addMahasiswa(String npm, String nama, char jenisKelamin, Date tanggalMasuk);
 
     // Perwalian Manager
-    public Map<String, Dosen> getListAllPerwalian();
-    public void updatePerwalian(Map<Mahasiswa, Dosen> perwalian);
-    public void deletePerwalian(String npm, String kodeMK);
+    public Map<Mahasiswa, Dosen> getListAllPerwalian();
+    public void updatePerwalian(Mahasiswa mahasiswa, Dosen dosen);
+    public void deletePerwalian(Mahasiswa mahasiswa);
     public void addPerwalian(Mahasiswa mahasiswa, Dosen dosen);
 }

@@ -2,11 +2,8 @@ import java.util.Scanner;
 
 public class SPMS{
     // Data Manager
-    private KRSManager krsManager = new KRSManager();
-    private MataKuliahManager mkManager = new MataKuliahManager();
     private MahasiswaManager mahasiswaManager = new MahasiswaManager();
     private DosenManager dosenManager = new DosenManager();
-    private PerwalianManager perwalianManager = new PerwalianManager();
     
     // UI Manager
     private AdminManager adminManager;
@@ -23,6 +20,7 @@ public class SPMS{
     private void selectRole(){
         
         while (true) {
+            System.out.println("=====================");
             System.out.println("Select your role: ");
             System.out.println("1. Admin");
             System.out.println("2. Mahasiswa");
@@ -42,19 +40,28 @@ public class SPMS{
                     String npm = scanner.nextLine();
                     Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(npm);
                     if (mahasiswa == null) {
+                        System.out.println("=====================");
                         System.out.println("Mahasiswa not found.");
                     } else {
                         krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
+                        System.out.println("=====================");
                         System.out.println("Selamat datang " + mahasiswa.getNama() + " - " + mahasiswa.getNpm());
                         krsMahasiswaManager.showMenu();
                     }
                     break;
                 case 3:
-                    // System.out.print("Input NIP: ");
-                    // String nidn = scanner.nextLine();
-                    // Dosen dosen = dosenManager.getDosen(nidn);
-                    // dosenWaliManager = new DosenWaliManager(dosen);
-                    // dosenWaliManager.showMenu();
+                    System.out.print("Input NIP: ");
+                    String nidn = scanner.nextLine();
+                    Dosen dosen = dosenManager.getDosen(nidn);
+                    if (dosen == null) {
+                        System.out.println("=====================");
+                        System.out.println("Dosen not found.");
+                    } else {
+                        dosenWaliManager = new DosenWaliManager(dosen);
+                        System.out.println("=====================");
+                        System.out.println("Selamat datang " + dosen.getNama() + " - " + dosen.getNip());
+                        dosenWaliManager.showMenu();
+                    }
                     break;
                 case 4:
                     System.exit(0);
