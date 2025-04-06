@@ -44,10 +44,11 @@ public class SPMS{
                     if (mahasiswa == null) {
                         System.out.println("Mahasiswa not found.");
                         return;
+                    } else {
+                        krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
+                        System.out.println("Selamat datang " + mahasiswa.getNama() + " - " + mahasiswa.getNpm());
+                        krsMahasiswaManager.showMenu();
                     }
-                    // TODO: Tambahkan Selamat data + nama mhs dan npm
-                    krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
-                    krsMahasiswaManager.showMenu();
                     break;
                 case 3:
                     // System.out.print("Input NIP: ");
