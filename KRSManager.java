@@ -93,8 +93,16 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
     }
 
     @Override
-    public void getKRSMahasiswa(String npm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getKRSMahasiswa'");
+    public ArrayList<KRS> getKRSMahasiswa(String npm) {
+        ArrayList<KRS> result = new ArrayList<>();
+        for (KRS krs : listKRS) {
+            if (krs.getMahasiswa().getNpm().equals(npm)) {
+                result.add(krs);
+            }
+        }
+        if (result.isEmpty()) {
+            System.out.println("Tidak ada KRS yang ditemukan untuk mahasiswa dengan NPM: " + npm);
+        }
+        return result;
     }
 }

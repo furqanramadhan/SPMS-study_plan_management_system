@@ -104,10 +104,9 @@ public class KRSMahasiswaManager implements IMahasiswa {
                 newKRS.tambahMataKuliah(mk);
             }
 
-            // TODO: Ubah jadi ajukan krs
-
             // Submit KRS using KRSManager
-            krsManager.updateKRS(newKRS); 
+            krsManager.ajukanKRS(dataMahasiswa, semester, listMK);
+
             // Confirmation message
             System.out.println("KRS berhasil diajukan untuk mahasiswa:" + dataMahasiswa.getNama() + "-"
                     + dataMahasiswa.getNpm() + "pada semester " + semester);
