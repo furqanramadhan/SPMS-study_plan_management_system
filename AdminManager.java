@@ -15,6 +15,8 @@ public class AdminManager implements IAdmin {
 
     private Scanner scanner = new Scanner(System.in);
 
+    private SystemUtils utils = new SystemUtils();
+
     public void showMenu() {
         while (true) {
             System.out.println("=====================");
@@ -48,6 +50,7 @@ public class AdminManager implements IAdmin {
             int pilihan = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
+            utils.clearConsole();
             switch (pilihan) {
                 case 1:
                     try {
@@ -98,7 +101,6 @@ public class AdminManager implements IAdmin {
                     } catch (Exception e) {
                         System.out.println("=====================");
                         System.out.println("Data Mata Kuliah Kosong");
-                        e.printStackTrace();
                     }
                     break;
                 case 4:

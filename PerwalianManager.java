@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class PerwalianManager implements IListPerwalian, IManagementPerwalian {
-    private Map<String, Dosen> listPerwalian = new HashMap<String, Dosen>();
+    private static Map<String, Dosen> listPerwalian = new HashMap<String, Dosen>();
     IManagementMahasiswa mahasiswaManager = new MahasiswaManager();
 
     @Override

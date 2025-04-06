@@ -13,6 +13,9 @@ public class SPMS{
     // Scanner
     static Scanner scanner = new Scanner(System.in);
 
+    private SystemUtils utils = new SystemUtils();
+
+
     public void setAdminManager(AdminManager adminManager){
         this.adminManager = adminManager;
     }
@@ -30,6 +33,7 @@ public class SPMS{
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
+            utils.clearConsole();
             switch(choice){
                 case 1:
                     setAdminManager(new AdminManager());
@@ -74,6 +78,9 @@ public class SPMS{
     }
 
     public static void main(String[] args){
+        // Generate sample data
+        new GenerateDummyData();
+
         // Main Program
         SPMS spms = new SPMS();
         spms.selectRole();
