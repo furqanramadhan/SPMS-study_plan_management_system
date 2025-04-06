@@ -33,4 +33,14 @@ public class DosenManager implements IManagementDosen{
         Dosen dosen = new Dosen(nip, nama, jenisKelamin);
         listDosen.add(dosen);
     }
+
+    @Override
+    public Dosen getDosen(String nip) {
+        for (Dosen dosen : listDosen) {
+            if (dosen.getNip().equals(nip)) {
+                return dosen;
+            }
+        }
+        return null;
+    }
 }

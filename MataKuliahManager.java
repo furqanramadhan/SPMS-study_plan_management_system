@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MataKuliahManager implements IListMK, IUpdatePeserta, IManagementMK{
-    static Map<String, MataKuliah> listMK;
+    private static Map<String, MataKuliah> listMK;
 
     public MataKuliahManager(){
         listMK = new HashMap<String, MataKuliah>();
@@ -62,6 +62,16 @@ public class MataKuliahManager implements IListMK, IUpdatePeserta, IManagementMK
         mataKuliah.setHari(hari);
         mataKuliah.setWaktu(waktu);
         listMK.put(kodeMK, mataKuliah);
+    }
+
+    @Override
+    public MataKuliah getMK(String kodeMK) {
+        if (listMK.containsKey(kodeMK)){
+            return listMK.get(kodeMK);
+        } else {
+            System.out.println("Mata Kuliah tidak ditemukan");
+            return null;
+        }
     };
 
 }

@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class KRSMahasiswaManager implements IMahasiswa {
     private Mahasiswa dataMahasiswa;
+    IListMK mataKuliahManager = new MataKuliahManager();
+    ISubmitKRS krsManager = new KRSManager();
     private Scanner scanner = new Scanner(System.in);
 
     // Constructor
@@ -42,7 +44,6 @@ public class KRSMahasiswaManager implements IMahasiswa {
 
     @Override
     public ArrayList<MataKuliah> getMataKuliah() {
-        MataKuliahManager mataKuliahManager = new MataKuliahManager();
         ArrayList<MataKuliah> result = mataKuliahManager.getListMK();
         if (result.isEmpty()) {
             System.out.println("Tidak ada daftar mata kuliah yang tersedia.");
@@ -69,8 +70,7 @@ public class KRSMahasiswaManager implements IMahasiswa {
             System.out.println("Data Mahasiswa tidak tersedia.");
             return new ArrayList<>();
         } else {
-            KRSManager krsManager = new KRSManager();
-            ArrayList<KRS> result = krsManager.getKRS(dataMahasiswa);
+            ArrayList<KRS> result = krsManager.getKRSMahasiswa(dataMahasiswa.getNpm());
             if (result.isEmpty()) {
                 System.out.println("Tidak ada KRS yang ditemukan untuk mahasiswa: " + dataMahasiswa.getNama());
             } else {
@@ -98,14 +98,16 @@ public class KRSMahasiswaManager implements IMahasiswa {
             System.out.println("Tidak ada Mata Kuliah yang diajukan. Silahkan pilih Mata Kuliah yang ingin diajukan.");
             return;
         } else {
-            KRSManager krsManager = new KRSManager();
             KRS newKRS = new KRS(dataMahasiswa, semester);
             // Add Mata Kuliah to KRS
             for (MataKuliah mk : listMK) {
                 newKRS.tambahMataKuliah(mk);
             }
+
+            // TODO: Ubah jadi ajukan krs
+
             // Submit KRS using KRSManager
-            krsManager.updateKRS(newKRS);
+            krsManager.updateKRS(newKRS); 
             // Confirmation message
             System.out.println("KRS berhasil diajukan untuk mahasiswa:" + dataMahasiswa.getNama() + "-"
                     + dataMahasiswa.getNpm() + "pada semester " + semester);

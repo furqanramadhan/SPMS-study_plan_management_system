@@ -34,4 +34,13 @@ public class Dosen {
     public void setJenisKelamin(char jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
+
+    @Override
+    public String toString() {
+        return "Dosen{" +
+                "nip='" + nip + '\'' +
+                ", nama='" + nama + '\'' +
+                ", jenisKelamin=" + jenisKelamin +
+                '}';
+    }
 }

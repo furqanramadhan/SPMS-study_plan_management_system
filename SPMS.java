@@ -43,7 +43,6 @@ public class SPMS{
                     Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(npm);
                     if (mahasiswa == null) {
                         System.out.println("Mahasiswa not found.");
-                        return;
                     } else {
                         krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
                         System.out.println("Selamat datang " + mahasiswa.getNama() + " - " + mahasiswa.getNpm());

@@ -1,6 +1,5 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
@@ -139,6 +138,183 @@ public class AdminManager implements IAdmin {
                     }
 
                     managementMahasiswa.addMahasiswa(npm, nama, jenisKelamin, tanggalMasuk);
+                    break;
+
+                case 6:
+                    System.out.print("NPM: ");
+                    String npmUpdate = scanner.nextLine();
+                    Mahasiswa mahasiswaUpdate = managementMahasiswa.getMahasiswa(npmUpdate);
+                    if (mahasiswaUpdate != null) {
+                        System.out.print("Nama: ");
+                        String namaUpdate = scanner.nextLine();
+                        System.out.print("Jenis Kelamin (L/P): ");
+                        char jenisKelaminUpdate = scanner.nextLine().charAt(0);
+                        System.out.print("Tanggal Masuk (dd/MM/yyyy): ");
+                        String tanggalMasukStrUpdate = scanner.nextLine();
+
+                        SimpleDateFormat dateFormatUpdate = new SimpleDateFormat("dd/MM/yyyy");
+                        Date tanggalMasukUpdate = null;
+                        try {
+                            tanggalMasukUpdate = dateFormatUpdate.parse(tanggalMasukStrUpdate);
+                        } catch (ParseException e) {
+                            System.out.println("Format tanggal salah. Gunakan dd/MM/yyyy");
+                            tanggalMasukUpdate = mahasiswaUpdate.getTanggalMasuk();
+                            e.printStackTrace();
+                        }
+
+                        mahasiswaUpdate.setNama(namaUpdate);
+                        mahasiswaUpdate.setJenisKelamin(jenisKelaminUpdate);
+                        mahasiswaUpdate.setTanggalMasuk(tanggalMasukUpdate);
+
+                        managementMahasiswa.updateMahasiswa(mahasiswaUpdate);
+                    } else {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                    }
+                    break;
+
+                case 7:
+                    System.out.print("NPM: ");
+                    String npmDelete = scanner.nextLine();
+                    Mahasiswa mahasiswaDelete = managementMahasiswa.getMahasiswa(npmDelete);
+                    if (mahasiswaDelete != null) {
+                        managementMahasiswa.deleteMahasiswa(npmDelete);
+                        System.out.println("Mahasiswa dengan NPM " + npmDelete + " telah dihapus.");
+                    } else {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                    }
+                    break;
+                case 8:
+                    System.out.print("NIP: ");
+                    String nip = scanner.nextLine();
+                    System.out.print("Nama: ");
+                    String namaDosen = scanner.nextLine();
+                    System.out.print("Jenis Kelamin (L/P): ");
+                    char jenisKelaminDosen = scanner.nextLine().charAt(0);
+
+                    managementDosen.addDosen(nip, namaDosen, jenisKelaminDosen);
+                    break;
+                case 9:
+                    System.out.print("NIP: ");
+                    String nipUpdate = scanner.nextLine();
+                    Dosen dosenUpdate = managementDosen.getDosen(nipUpdate);
+                    if (dosenUpdate != null) {
+                        System.out.print("Nama: ");
+                        String namaDosenUpdate = scanner.nextLine();
+                        System.out.print("Jenis Kelamin (L/P): ");
+                        char jenisKelaminDosenUpdate = scanner.nextLine().charAt(0);
+
+                        dosenUpdate.setNama(namaDosenUpdate);
+                        dosenUpdate.setJenisKelamin(jenisKelaminDosenUpdate);
+
+                        managementDosen.updateDosen(dosenUpdate);
+                    } else {
+                        System.out.println("Dosen tidak ditemukan.");
+                    }
+                    break;
+                case 10:
+                    System.out.print("NIP: ");
+                    String nipDelete = scanner.nextLine();
+                    Dosen dosenDelete = managementDosen.getDosen(nipDelete);
+                    if (dosenDelete != null) {
+                        managementDosen.deleteDosen(nipDelete);
+                        System.out.println("Dosen dengan NIP " + nipDelete + " telah dihapus.");
+                    } else {
+                        System.out.println("Dosen tidak ditemukan.");
+                    }
+                    break;
+                case 11:
+                    System.out.print("Kode MK: ");
+                    String kodeMK = scanner.nextLine();
+                    System.out.print("Nama MK: ");
+                    String namaMK = scanner.nextLine();
+                    System.out.print("Kelas MK: ");
+                    String kelasMK = scanner.nextLine();
+                    System.out.print("NIP Dosen: ");
+                    String nipDosen = scanner.nextLine();
+                    Dosen dosen = managementDosen.getDosen(nipDosen);
+                    if (dosen == null) {
+                        System.out.println("Dosen tidak ditemukan.");
+                        break;
+                    }
+                    System.out.print("Ruang: ");
+                    String ruang = scanner.nextLine();
+                    System.out.print("Hari: ");
+                    String hari = scanner.nextLine();
+                    System.out.print("Waktu (HH:mm): ");
+                    String waktuStr = scanner.nextLine();
+
+                    SimpleDateFormat dateFormatMK = new SimpleDateFormat("HH:mm");
+                    Date waktuMK = null;
+                    try {
+                        waktuMK = dateFormatMK.parse(waktuStr);
+                    } catch (ParseException e) {
+                        System.out.println("Format tanggal salah. Gunakan dd/MM/yyyy");
+                        e.printStackTrace();
+                    }
+                    System.out.print("SKS: ");
+                    int sks = scanner.nextInt();
+
+                    managementMK.addMK(kodeMK, namaMK, kelasMK, dosen, ruang, hari, waktuMK, sks);
+                    break;
+
+                case 12:
+                    System.out.print("Kode MK: ");
+                    String kodeMKUpdate = scanner.nextLine();
+                    MataKuliah mataKuliahUpdate = managementMK.getMK(kodeMKUpdate);
+                    if (mataKuliahUpdate != null) {
+                        System.out.print("Nama MK: ");
+                        String namaMKUpdate = scanner.nextLine();
+                        System.out.print("Kelas MK: ");
+                        String kelasMKUpdate = scanner.nextLine();
+                        System.out.print("NIP Dosen: ");
+                        String nipDosenUpdate = scanner.nextLine();
+                        Dosen dosenNew = managementDosen.getDosen(nipDosenUpdate);
+                        if (dosenNew == null) {
+                            System.out.println("Dosen tidak ditemukan.");
+                            break;
+                        }
+                        System.out.print("Ruang: ");
+                        String ruangUpdate = scanner.nextLine();
+                        System.out.print("Hari: ");
+                        String hariUpdate = scanner.nextLine();
+                        System.out.print("Waktu (HH:mm): ");
+                        String waktuStrUpdate = scanner.nextLine();
+
+                        SimpleDateFormat dateFormatMKUpdate = new SimpleDateFormat("HH:mm");
+                        Date waktuMKUpdate = null;
+                        try {
+                            waktuMKUpdate = dateFormatMKUpdate.parse(waktuStrUpdate);
+                        } catch (ParseException e) {
+                            System.out.println("Format tanggal salah. Gunakan dd/MM/yyyy");
+                            e.printStackTrace();
+                        }
+                        System.out.print("SKS: ");
+                        int sksUpdate = scanner.nextInt();
+
+                        mataKuliahUpdate.setNamaMK(namaMKUpdate);
+                        mataKuliahUpdate.setKelasMK(kelasMKUpdate);
+                        mataKuliahUpdate.setDosen(dosenNew);
+                        mataKuliahUpdate.setRuang(ruangUpdate);
+                        mataKuliahUpdate.setHari(hariUpdate);
+                        mataKuliahUpdate.setWaktu(waktuMKUpdate);
+                        mataKuliahUpdate.setSks(sksUpdate);
+
+                        managementMK.updateMK(mataKuliahUpdate);
+                    } else {
+                        System.out.println("Mata Kuliah tidak ditemukan.");
+                    }
+                    break;
+
+                case 13:
+                    System.out.print("Kode MK: ");
+                    String kodeMKDelete = scanner.nextLine();
+                    MataKuliah mataKuliahDelete = managementMK.getMK(kodeMKDelete);
+                    if (mataKuliahDelete != null) {
+                        managementMK.deleteMK(kodeMKDelete);
+                        System.out.println("Mata Kuliah dengan Kode MK " + kodeMKDelete + " telah dihapus.");
+                    } else {
+                        System.out.println("Mata Kuliah tidak ditemukan.");
+                    }
                     break;
 
                 case 19:

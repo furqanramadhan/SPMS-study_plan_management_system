@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
-    private ArrayList<KRS> listKRS;
+    private static ArrayList<KRS> listKRS;
 
     public KRSManager() {
         listKRS = new ArrayList<KRS>();
@@ -90,5 +90,11 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             newKRS.tambahMataKuliah(mk);
         }
         updateKRS(newKRS);
+    }
+
+    @Override
+    public void getKRSMahasiswa(String npm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getKRSMahasiswa'");
     }
 }
