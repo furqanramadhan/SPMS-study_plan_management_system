@@ -17,15 +17,30 @@ public class KRSMahasiswaManager implements IMahasiswa {
 
     @Override
     public ArrayList<MataKuliah> getMataKuliah() {
-        ArrayList<MataKuliah> result = new ArrayList<MataKuliah>();
-        // Return the list of MataKuliah associated with this Mahasiswa
+        MataKuliahManager mataKuliahManager = new MataKuliahManager();
+        ArrayList<MataKuliah> result = mataKuliahManager.getListMK();
+        if (result.isEmpty()) {
+            System.out.println("Tidak ada daftar mata kuliah yang tersedia.");
+        } else {
+            System.out.println("Daftar Mata Kuliah yang Tersedia: ");
+            for (MataKuliah mk : result) {
+                System.out.println("Kode MK: " + mk.getKodeMK());
+                System.out.println("Nama MK: " + mk.getNamaMK());
+                System.out.println("Kelas MK: " + mk.getKelasMK());
+                System.out.println("Dosen: " + mk.getDosen());
+                System.out.println("Ruang: " + mk.getRuang());
+                System.out.println("Hari: " + mk.getHari());
+                System.out.println("Waktu: " + mk.getWaktu());
+                System.out.println("SKS: " + mk.getSks());
+                System.out.println("------------------------------");
+            }
+        }
         return result;
     }
 
     @Override
     public ArrayList<KRS> getKRS() {
         ArrayList<KRS> result = new ArrayList<KRS>();
-        // Return the list of KRS submitted by this Mahasiswa
         return result;
     }
 
