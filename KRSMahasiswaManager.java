@@ -40,9 +40,29 @@ public class KRSMahasiswaManager implements IMahasiswa {
 
     @Override
     public ArrayList<KRS> getKRS() {
-        ArrayList<KRS> result = new ArrayList<KRS>();
-        return result;
+        if (dataMahasiswa == null) { // Corrected condition to check if dataMahasiswa is null
+            System.out.println("Data Mahasiswa tidak tersedia.");
+            return new ArrayList<>();
+        } else {
+            KRSManager krsManager = new KRSManager();
+            ArrayList<KRS> result = krsManager.getKRS(dataMahasiswa);
+            if (result.isEmpty()) {
+                System.out.println("Tidak ada KRS yang ditemukan untuk mahasiswa: " + dataMahasiswa.getNama());
+            } else {
+                System.out.println("Daftar KRS untuk mahasiswa: " + dataMahasiswa.getNama());
+                for (KRS krs : result) {
+                    System.out.println("Semester: " + krs.getSemester());
+                    System.out.println("Mata Kuliah: ");
+                    for (MataKuliah mk : krs.getMataKuliah()) {
+                        System.out.println("- " + mk.getKodeMK() + ": " + mk.getNamaMK());
+                    }
+                    System.out.println("------------------------------");
+                }
+            }
+            return result;
+        }
     }
+    
 
     @Override
     public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK) {
