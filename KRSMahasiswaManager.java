@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class KRSMahasiswaManager implements IMahasiswa {
     private Mahasiswa dataMahasiswa;
+    private Scanner scanner = new Scanner(System.in);
 
     // Constructor
     public KRSMahasiswaManager(Mahasiswa mahasiswa) {
@@ -9,10 +11,33 @@ public class KRSMahasiswaManager implements IMahasiswa {
     }
 
     public void showMenu() {
-        System.out.println("Menu KRS Mahasiswa: ");
-        System.out.println("1. Lihat KRS");
-        System.out.println("2. Lihat Mata Kuliah");
-        System.out.println("3. Ajukan KRS");
+        while (true) {
+            System.out.println("Menu KRS Mahasiswa: ");
+            System.out.println("1. Lihat KRS");
+            System.out.println("2. Lihat Mata Kuliah");
+            System.out.println("3. Ajukan KRS");
+            System.out.println("4. Keluar");
+
+            System.out.print("Pilih menu: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            switch (choice) {
+                case 1:
+                    getKRS();
+                    break;
+                case 2:
+                    getMataKuliah();
+                    break;
+                case 3:
+                    // TODO: Implement Ajukan KRS
+                    break;
+                case 4:
+                    System.out.println("Keluar dari menu KRS Mahasiswa.");
+                    return;
+                default:
+                    System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+            }
+        }
     }
 
     @Override
@@ -62,7 +87,6 @@ public class KRSMahasiswaManager implements IMahasiswa {
             return result;
         }
     }
-    
 
     @Override
     public void ajukanKRS(int semester, ArrayList<MataKuliah> listMK) {

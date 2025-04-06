@@ -12,6 +12,7 @@ public class AdminManager implements IAdmin {
     private IManagementMahasiswa managementMahasiswa = new MahasiswaManager();
     private IManagementDosen managementDosen = new DosenManager();
     private IManagementPerwalian managementPerwalian = new PerwalianManager();
+    private IManagementKRS managementKRS = new KRSManager();
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -156,29 +157,69 @@ public class AdminManager implements IAdmin {
 
     @Override
     public void updateMK(MataKuliah mataKuliah) {
-        // TODO: Implement this method
+        try {
+            managementMK.updateMK(mataKuliah);
+        } catch (NullPointerException e) {
+            System.out.println("Data Mata Kuliah Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Mata Kuliah tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal mengupdate mata kuliah: " + e.getMessage());
+        }
     };
 
     @Override
     public void deleteMK(String kodeMK) {
-        // TODO: Implement this method
+        try {
+            managementMK.deleteMK(kodeMK);
+        } catch (NullPointerException e) {
+            System.out.println("Data Mata Kuliah Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Mata Kuliah tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal menghapus mata kuliah: " + e.getMessage());
+        }
     };
 
     @Override
     public void updateKRS(KRS krs) {
-        // TODO: Implement this method
+        try {
+            managementKRS.updateKRS(krs);
+        } catch (NullPointerException e) {
+            System.out.println("Data KRS Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data KRS tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal mengupdate KRS: " + e.getMessage());
+        }
     };
 
     @Override
-    public KRS getKRS(Mahasiswa mahasiswa) {
-        // TODO: Implement this method
+    public ArrayList<KRS> getKRS(Mahasiswa mahasiswa) {
+        try {
+            return managementKRS.getKRS(mahasiswa);
+        } catch (NullPointerException e) {
+            System.out.println("Data KRS Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data KRS tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal mendapatkan KRS: " + e.getMessage());
+        }
         return null;
     };
 
     @Override
-    public void addMK(String kodeMK, String namaMK, String kelasMK, String dosen, String ruang, String hari, Date waktu,
+    public void addMK(String kodeMK, String namaMK, String kelasMK, Dosen dosen, String ruang, String hari, Date waktu,
             int sks) {
-        // TODO: Implement this method
+        try {
+            managementMK.addMK(kodeMK, namaMK, kelasMK, dosen, ruang, hari, waktu, sks);
+        } catch (NullPointerException e) {
+            System.out.println("Data Mata Kuliah Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Mata Kuliah tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal menambahkan mata kuliah: " + e.getMessage());
+        }
     }
 
     @Override
@@ -188,20 +229,41 @@ public class AdminManager implements IAdmin {
 
     @Override
     public void updateDosen(Dosen dosen) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateDosen'");
+        try {
+            managementDosen.updateDosen(dosen);
+        } catch (NullPointerException e) {
+            System.out.println("Data Dosen Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Dosen tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal mengupdate dosen: " + e.getMessage());
+        }
     }
 
     @Override
     public void deleteDosen(String nip) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteDosen'");
+        try {
+            managementDosen.deleteDosen(nip);
+        } catch (NullPointerException e) {
+            System.out.println("Data Dosen Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Dosen tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal menghapus dosen: " + e.getMessage());
+        }
     }
 
     @Override
-    public void addDosen(String nip, String nama, char jenisKelamin, Date tanggalMasuk) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addDosen'");
+    public void addDosen(String nip, String nama, char jenisKelamin) {
+        try {
+            managementDosen.addDosen(nip, nama, jenisKelamin);
+        } catch (NullPointerException e) {
+            System.out.println("Data Dosen Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Dosen tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal menambahkan dosen: " + e.getMessage());
+        }
     }
 
     @Override
@@ -211,14 +273,28 @@ public class AdminManager implements IAdmin {
 
     @Override
     public void updateMahasiswa(Mahasiswa mahasiswa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateMahasiswa'");
+        try {
+            managementMahasiswa.updateMahasiswa(mahasiswa);
+        } catch (NullPointerException e) {
+            System.out.println("Data Mahasiswa Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Mahasiswa tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal mengupdate mahasiswa: " + e.getMessage());
+        }
     }
 
     @Override
     public void deleteMahasiswa(String npm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteMahasiswa'");
+        try {
+            managementMahasiswa.deleteMahasiswa(npm);
+        } catch (NullPointerException e) {
+            System.out.println("Data Mahasiswa Kosong");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Data Mahasiswa tidak valid");
+        } catch (Exception e) {
+            System.out.println("Gagal menghapus mahasiswa: " + e.getMessage());
+        }
     }
 
     @Override
@@ -248,8 +324,7 @@ public class AdminManager implements IAdmin {
     }
 
     @Override
-    public void addPerwalian(String npm, String kodeMK, String kelasMK, String dosen, String ruang, String hari,
-            Date waktu, int sks) {
+    public void addPerwalian(Mahasiswa mahasiswa, Dosen dosen) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'addPerwalian'");
     };

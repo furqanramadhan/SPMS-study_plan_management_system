@@ -28,6 +28,7 @@ public class SPMS{
         System.out.println("4. Exit");
         System.out.print("Your choice: ");
         int choice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
 
         switch(choice){
             case 1:
@@ -38,6 +39,10 @@ public class SPMS{
                 System.out.print("Input NPM: ");
                 String npm = scanner.nextLine();
                 Mahasiswa mahasiswa = mahasiswaManager.getMahasiswa(npm);
+                if (mahasiswa == null) {
+                    System.out.println("Mahasiswa not found.");
+                    return;
+                }
                 krsMahasiswaManager = new KRSMahasiswaManager(mahasiswa);
                 krsMahasiswaManager.showMenu();
                 break;
