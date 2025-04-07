@@ -18,16 +18,16 @@ public class GenerateDummyData {
         MahasiswaManager mahasiswaManager = new MahasiswaManager();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            mahasiswaManager.addMahasiswa("2022001", "Alice",'L' ,dateFormat.parse("2000-01-01"));
-            mahasiswaManager.addMahasiswa("2022002", "Bob", 'L', dateFormat.parse("2000-02-02"));
-            mahasiswaManager.addMahasiswa("2022003", "Charlie", 'L', dateFormat.parse("2000-03-03"));
-            mahasiswaManager.addMahasiswa("2022004", "Diana", 'P', dateFormat.parse("2000-04-04"));
-            mahasiswaManager.addMahasiswa("2022005", "Eve", 'P', dateFormat.parse("2000-05-05"));
-            mahasiswaManager.addMahasiswa("2022006", "Frank", 'L', dateFormat.parse("2000-06-06"));
-            mahasiswaManager.addMahasiswa("2022007", "Grace", 'P', dateFormat.parse("2000-07-07"));
-            mahasiswaManager.addMahasiswa("2022008", "Hank", 'L', dateFormat.parse("2000-08-08"));
-            mahasiswaManager.addMahasiswa("2022009", "Ivy", 'P', dateFormat.parse("2000-09-09"));
-            mahasiswaManager.addMahasiswa("2022010", "Jack", 'L', dateFormat.parse("2000-10-10"));
+            mahasiswaManager.addMahasiswa("2022001", "Alice",'L' ,dateFormat.parse("2021-01-01"));
+            mahasiswaManager.addMahasiswa("2022002", "Bob", 'L', dateFormat.parse("2021-02-02"));
+            mahasiswaManager.addMahasiswa("2022003", "Charlie", 'L', dateFormat.parse("2021-03-03"));
+            mahasiswaManager.addMahasiswa("2022004", "Diana", 'P', dateFormat.parse("2021-04-04"));
+            mahasiswaManager.addMahasiswa("2022005", "Eve", 'P', dateFormat.parse("2021-05-05"));
+            mahasiswaManager.addMahasiswa("2022006", "Frank", 'L', dateFormat.parse("2021-06-06"));
+            mahasiswaManager.addMahasiswa("2022007", "Grace", 'P', dateFormat.parse("2021-07-07"));
+            mahasiswaManager.addMahasiswa("2022008", "Hank", 'L', dateFormat.parse("2022-08-08"));
+            mahasiswaManager.addMahasiswa("2022009", "Ivy", 'P', dateFormat.parse("2022-09-09"));
+            mahasiswaManager.addMahasiswa("2022010", "Jack", 'L', dateFormat.parse("2022-10-10"));
         } catch (ParseException e) {
             System.out.println("Error parsing date: " + e.getMessage());
             e.printStackTrace();
