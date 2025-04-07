@@ -3,7 +3,7 @@
 ## 📝 UTS Perangkat Lunak Berbasis Komponen
 
 ## ✨Kelompok 23 ✨
-### Link Slide Presentasi: ![Canva](https://www.canva.com/design/DAGj7aIlAHg/w3Kj7Nxs6go_QRUwqj64Xg/edit?utm_content=DAGj7aIlAHg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+### Link Slide Presentasi: ![](https://www.canva.com/design/DAGj7aIlAHg/w3Kj7Nxs6go_QRUwqj64Xg/edit?utm_content=DAGj7aIlAHg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 | Name            | NPM           |
 | --------------- | ------------- |
