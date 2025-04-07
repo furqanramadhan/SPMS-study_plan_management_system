@@ -57,7 +57,9 @@ public class Mahasiswa {
         int tahunSekarang = calNow.get(Calendar.YEAR);
         int tahunMasuk = calMasuk.get(Calendar.YEAR);
     
-        int semester = (tahunSekarang - tahunMasuk) * 2; // 1 tahun = 2 semester
+        int bulanSekarang = calNow.get(Calendar.MONTH);
+        int bulanMasuk = calMasuk.get(Calendar.MONTH);
+        int semester = ((tahunSekarang - tahunMasuk) * 2) + ((bulanSekarang - bulanMasuk) >= 6 ? 1 : 0); // Tambahkan 1 semester jika selisih bulan >= 6
         return Math.max(semester, 1); // Minimal semester 1 jika ada kesalahan input
     }
 

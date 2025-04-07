@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
-    private static ArrayList<KRS> listKRS;
+    private static ArrayList<KRS> listKRS = new ArrayList<KRS>();
 
     public KRSManager() {
-        listKRS = new ArrayList<KRS>();
+        // Constructor
     }
     
     public int countTotalSKS(Mahasiswa mhs) {
@@ -73,18 +73,20 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
     }
 
     @Override
-    public void acceptPengajuan(Mahasiswa mahasiswa) {
-        for (KRS krs : listKRS) {
-            if (krs.getMahasiswa().getNpm().equals(mahasiswa.getNpm())) {
-                krs.setApproved(true); // Assuming KRS has an `approved` field
+    public void acceptPengajuan(KRS krs) {
+        for (KRS krsItem : listKRS) {
+            if (krsItem.getMahasiswa().getNpm().equals(krs.getMahasiswa().getNpm()) &&
+                krsItem.getSemester() == krs.getSemester()) {
+                krsItem.setApproved(true); // Assuming KRS has an `approved` field
             }
         }
     }
     @Override
-    public void rejectPengajuan(Mahasiswa mahasiswa) {
-        for (KRS krs : listKRS) {
-            if (krs.getMahasiswa().getNpm().equals(mahasiswa.getNpm())) {
-                krs.setApproved(false); // Assuming KRS has an `approved` field
+    public void rejectPengajuan(KRS krs) {
+        for (KRS krsItem : listKRS) {
+            if (krsItem.getMahasiswa().getNpm().equals(krs.getMahasiswa().getNpm()) &&
+                krsItem.getSemester() == krs.getSemester()) {
+                krsItem.setApproved(false); // Assuming KRS has an `approved` field
             }
         }
     }
@@ -96,7 +98,7 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             newKRS.tambahMataKuliah(mk);
         }
         updateKRS(newKRS);
-        System.out.println("KRS berhasil diajukan untuk mahasiswa: " + mahasiswa.getNama() + " (NPM: " + mahasiswa.getNpm() + ")" + " pada semester " + semester);
+        // System.out.println("KRS berhasil diajukan untuk mahasiswa: " + mahasiswa.getNama() + " (NPM: " + mahasiswa.getNpm() + ")" + " pada semester " + semester);
 
     }
 
@@ -107,9 +109,6 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             if (krs.getMahasiswa().getNpm().equals(npm)) {
                 result.add(krs);
             }
-        }
-        if (result.isEmpty()) {
-            System.out.println("Tidak ada KRS yang ditemukan untuk mahasiswa dengan NPM: " + npm);
         }
         return result;
     }

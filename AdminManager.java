@@ -441,6 +441,8 @@ public class AdminManager implements IAdmin {
                         System.out.println("KRS tidak ditemukan.");
                         break;
                     }
+
+                    System.out.println("=====================");
                     System.out.println("Daftar KRS untuk Mahasiswa " + mahasiswaKRSView.getNama() + ":");
                     for (KRS krs : krsListView) {
                         System.out.println(krs.toString());
