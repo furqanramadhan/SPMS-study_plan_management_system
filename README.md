@@ -50,28 +50,54 @@ The purpose of this application is to provide a centralized system that allows a
 
 ---
 
-## 📐 System Design
+## 📊 System Design Diagrams
 
 ### ⚙️ Component Diagram
 
-The component diagram shows how different modules such as UI, business logic, and data management interact within the system.
+The component diagram illustrates how various modules interact within the system:
+
+- **Mahasiswa Manager**, **Dosen Manager**, and **Perwalian Manager** handle respective user and advisory data.
+- **Admin Manager** acts as the central controller.
+- **KRS Manager** and **KRS Mahasiswa Manager** manage course registration (KRS) from both admin and student sides.
+- UI components connect to business logic through well-defined interfaces.
+
 ![Component Diagram](diagrams/spms-component-diagram.png)
+
+---
 
 ### 👤 Use Case Diagram
 
-Describes the system functionalities available to different users:
+This diagram defines the system's main functionalities from a user's perspective:
 
-- Mahasiswa: view courses, submit KRS
-- Dosen Wali: review and approve/reject KRS
-- Admin: full management access
+- **Mahasiswa** can:
 
+  - View course listings.
+  - Fill and submit the KRS.
 
- ![Use Case Diagram](diagrams/spms-use-case-diagram.png)
+- **Dosen Wali** (Academic Advisor) can:
+
+  - Review submitted KRS.
+  - Approve or reject the student course plan.
+
+- **Admin** manages the system:
+  - Maintain user and course data.
+  - Oversee all KRS and perwalian records.
+
+![Use Case Diagram](diagrams/spms-use-case-diagram.png)
+
+---
 
 ### 🗂 Class Diagram
 
-The class diagram includes key entities such as `Mahasiswa`, `Dosen`, `MataKuliah`, `KRS`, and manager classes like `AdminManager`, `KRSManager`, and `PerwalianManager`. `Right click` for zoom into details
+The class diagram gives an overview of how data and operations are structured:
+
+- **Entities** like `Mahasiswa`, `Dosen`, `MataKuliah`, and `KRS` represent real-world data.
+- **Manager Classes** such as `AdminManager`, `KRSManager`, and `PerwalianManager` perform operations like create, update, and delete.
+- **Interfaces** enforce structure and consistency across modules.
+
 ![Class Diagram](diagrams/spms-class-diagram.png)
+
+---
 
 ---
 
