@@ -115,9 +115,10 @@ The class diagram gives an overview of how data and operations are structured:
 ## 🛠 How to Run
 
 1. Clone or download this repository.
-2. Open the project in your favorite Java IDE (e.g., IntelliJ IDEA, NetBeans, Code, etc).
-3. Compile the project using the `makefile` provided: This will automatically compile and run the main file.
-4. Follow the CLI prompts to operate as a **Student**, **Dosen Wali**, or **Admin**.
+You can clone with this link `https://github.com/furqanramadhan/SPMS-study_plan_management_system`
+3. Open the project in your favorite Java IDE (e.g., IntelliJ IDEA, NetBeans, Code, etc).
+4. Compile the project using the `makefile` provided: This will automatically compile and run the main file.
+5. Follow the CLI prompts to operate as a **Student**, **Dosen Wali**, or **Admin**.
 
 ## 🙌 Acknowledgments
 
