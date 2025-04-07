@@ -95,6 +95,7 @@ The class diagram gives an overview of how data and operations are structured:
 - **Manager Classes** such as `AdminManager`, `KRSManager`, and `PerwalianManager` perform operations like create, update, and delete.
 - **Interfaces** enforce structure and consistency across modules.
 
+💡 Right-click on the image and select "Open in new tab" to zoom in for a better view.
 ![Class Diagram](diagrams/spms-class-diagram.png)
 
 ---
