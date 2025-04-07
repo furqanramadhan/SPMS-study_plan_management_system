@@ -39,7 +39,7 @@ public class DosenWaliManager implements IDosenWali {
                 case 3:
                     // TODO: Implement method to accept/reject KRS
                     break;
-                case 5:
+                case 4:
                     System.out.println("Keluar dari menu Dosen Wali");
                     return;
                 default:

@@ -1,5 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class GenerateDummyData {
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -41,6 +42,7 @@ public class GenerateDummyData {
 
         // Create dummy data for MataKuliah
 
+        MataKuliahManager mataKuliahManager = new MataKuliahManager();
         try {
             Dosen dosen1 = dosenManager.getDosen("1000");
             Dosen dosen2 = dosenManager.getDosen("1001");
@@ -48,7 +50,6 @@ public class GenerateDummyData {
             Dosen dosen4 = dosenManager.getDosen("1003");
             Dosen dosen5 = dosenManager.getDosen("1004");
 
-            MataKuliahManager mataKuliahManager = new MataKuliahManager();
             mataKuliahManager.addMK("INF001", "Pemrograman Dasar", "B", dosen1, "E.02.07", "Senin",
                     timeFormat.parse("08:00"), 3);
             mataKuliahManager.addMK("INF002", "Struktur Data", "A", dosen2, "D.03.02", "Selasa",
@@ -61,6 +62,31 @@ public class GenerateDummyData {
 
         } catch (Exception e) {
             System.out.println("Error adding Dosen: " + e.getMessage());
+        }
+
+        // Create dummy data for KRS
+        try {
+            KRSManager krsManager = new KRSManager();
+            Mahasiswa mhs1 = mahasiswaManager.getMahasiswa("2022001");
+            Mahasiswa mhs2 = mahasiswaManager.getMahasiswa("2022002");
+            Mahasiswa mhs3 = mahasiswaManager.getMahasiswa("2022003");
+
+            ArrayList<MataKuliah> listMK1 = new ArrayList<>();
+            listMK1.add(mataKuliahManager.getMK("INF001"));
+            listMK1.add(mataKuliahManager.getMK("INF002"));
+            krsManager.ajukanKRS(mhs1, 1, listMK1);
+            
+            ArrayList<MataKuliah> listMK2 = new ArrayList<>();
+            listMK2.add(mataKuliahManager.getMK("INF003"));
+            listMK2.add(mataKuliahManager.getMK("INF004"));
+            krsManager.ajukanKRS(mhs2, 1, listMK2);
+
+            ArrayList<MataKuliah> listMK3 = new ArrayList<>();
+            listMK3.add(mataKuliahManager.getMK("INF005"));
+            listMK3.add(mataKuliahManager.getMK("INF001"));
+            krsManager.ajukanKRS(mhs3, 1, listMK3);
+        } catch (Exception e) {
+            System.out.println("Error adding KRS: " + e.getMessage());
         }
     }
 }
