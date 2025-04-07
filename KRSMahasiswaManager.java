@@ -95,60 +95,67 @@ public class KRSMahasiswaManager implements IMahasiswa {
             return;
         }
         if (availableMK == null || availableMK.isEmpty()) {
-            System.out.println("Tidak ada Mata Kuliah yang diajukan. Silahkan pilih Mata Kuliah yang ingin diajukan.");
-        } else {
-            // Calculate semester
-            semester = dataMahasiswa.hitungSemester();
-
-            // Display available Mata Kuliah
-            System.out.println("Daftar Mata Kuliah yang Tersedia: ");
+            System.out.println("Tidak ada Mata Kuliah yang tersedia untuk diajukan.");
+            return;
+        }
+    
+        // Calculate semester
+        int calculatedSemester = dataMahasiswa.hitungSemester();
+    
+        // Display available Mata Kuliah
+        System.out.println("Daftar Mata Kuliah yang Tersedia:");
+        for (MataKuliah mk : availableMK) {
+            System.out.println("- " + mk.getKodeMK() + ": " + mk.getNamaMK() + " (" + mk.getSks() + " SKS)");
+        }
+    
+        // Collect selected MataKuliah
+        ArrayList<MataKuliah> selectedMK = new ArrayList<>();
+        while (true) {
+            System.out.println("Masukkan kode mata kuliah yang ingin diajukan (atau ketik 'selesai' untuk mengakhiri): ");
+            String input = scanner.nextLine().trim();
+    
+            // Check if the user wants to finish
+            if (input.equalsIgnoreCase("selesai")) {
+                break;
+            }
+    
+            // Validate and add MataKuliah
+            boolean found = false;
             for (MataKuliah mk : availableMK) {
-                System.out.println("Kode MK: " + mk.getKodeMK());
-                System.out.println("Nama MK: " + mk.getNamaMK());
-                System.out.println("Kelas MK: " + mk.getKelasMK());
-                System.out.println("Dosen: " + mk.getDosen());
-                System.out.println("Ruang: " + mk.getRuang());
-                System.out.println("Hari: " + mk.getHari());
-                System.out.println("Waktu: " + mk.getWaktu());
-                System.out.println("SKS: " + mk.getSks());
-                System.out.println("------------------------------");
-            }
-            // Ask user to select MataKuliah
-            System.out.println(
-                    "Silahkan pilih Mata Kuliah yang ingin diajukan (masukkan kode MK, pisahkan dengan koma): ");
-            String input = scanner.nextLine();
-            String[] selectedKodeMK = input.split(",");
-
-            // Collected selected MataKuliah
-            ArrayList<MataKuliah> selectedMK = new ArrayList<>();
-            for (String kodeMK : selectedKodeMK) {
-                for (MataKuliah mk : availableMK) {
-                    if (mk.getKodeMK().trim().equalsIgnoreCase(kodeMK.trim())) {
-                        selectedMK.add(mk);
-                        break;
-                    }
+                if (mk.getKodeMK().equalsIgnoreCase(input)) {
+                    selectedMK.add(mk);
+                    found = true;
+                    System.out.println("Mata Kuliah berhasil ditambahkan: " + mk.getNamaMK());
+                    break;
                 }
             }
-            if (selectedKodeMK.length == 0) {
-                System.out.println("Tidak ada Mata Kuliah yang dipilih. Silahkan coba lagi.");
-                return;
-            } else {
-                // Create and submit KRS
-                KRSManager krsManager = new KRSManager();
-                KRS newKRS = new KRS(dataMahasiswa, semester);
-                for (MataKuliah mk : selectedMK) {
-                    newKRS.tambahMataKuliah(mk);
-                }
-                krsManager.updateKRS(newKRS);
-                // Confirmation message
-                System.out.println("KRS berhasil diajukan untuk mahasiswa: " + dataMahasiswa.getNama() + " - " + dataMahasiswa.getNpm() + " pada semester " + semester);
-                System.out.println("Mata Kuliah yang diajukan:");
-                for (MataKuliah mk : selectedMK) {
-                    System.out.println("- " + mk.getKodeMK() + ": " + mk.getNamaMK() + " (" + mk.getSks() + " SKS)");
-                }
-                System.out.println("------------------------------");
-                System.out.println("Silahkan tunggu konfirmasi dari dosen pembimbing akademik.");
+    
+            if (!found) {
+                System.out.println("Kode MK tidak valid: " + input);
             }
         }
-    }    
+    
+        // Check if any MataKuliah were selected
+        if (selectedMK.isEmpty()) {
+            System.out.println("Tidak ada Mata Kuliah yang dipilih. Silahkan coba lagi.");
+            return;
+        }
+    
+        // Create and submit KRS
+        KRSManager krsManager = new KRSManager();
+        KRS newKRS = new KRS(dataMahasiswa, calculatedSemester);
+        for (MataKuliah mk : selectedMK) {
+            newKRS.tambahMataKuliah(mk);
+        }
+        krsManager.updateKRS(newKRS);
+    
+        // Confirmation message
+        System.out.println("KRS berhasil diajukan untuk mahasiswa: " + dataMahasiswa.getNama() + " - " + dataMahasiswa.getNpm() + " pada semester " + calculatedSemester);
+        System.out.println("Mata Kuliah yang diajukan:");
+        for (MataKuliah mk : selectedMK) {
+            System.out.println("- " + mk.getKodeMK() + ": " + mk.getNamaMK() + " (" + mk.getSks() + " SKS)");
+        }
+        System.out.println("------------------------------");
+        System.out.println("Silahkan tunggu konfirmasi dari dosen pembimbing akademik.");
+    }   
 }
