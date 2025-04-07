@@ -64,6 +64,7 @@ Describes the system functionalities available to different users:
 - Mahasiswa: view courses, submit KRS
 - Dosen Wali: review and approve/reject KRS
 - Admin: full management access
+  ![Use Case Diagram](diagrams/spms-use-case-diagram.png)
 
 ### 🗂 Class Diagram
 
