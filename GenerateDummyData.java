@@ -2,6 +2,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class GenerateDummyData {
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    
     public GenerateDummyData() {
         DosenManager dosenManager = new DosenManager();
         dosenManager.addDosen("1000", "Dr. John Doe", 'L');
@@ -36,5 +38,32 @@ public class GenerateDummyData {
         perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2022002"), dosenManager.getDosen("1000"));
         perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2022003"), dosenManager.getDosen("1001"));
         perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2022004"), dosenManager.getDosen("1001"));
+
+        // Create dummy data for MataKuliah
+
+        try {
+            Dosen dosen1 = dosenManager.getDosen("1000");
+            Dosen dosen2 = dosenManager.getDosen("1001");
+            Dosen dosen3 = dosenManager.getDosen("1002");
+            Dosen dosen4 = dosenManager.getDosen("1003");
+            Dosen dosen5 = dosenManager.getDosen("1004");
+
+            MataKuliahManager mataKuliahManager = new MataKuliahManager();
+            mataKuliahManager.addMK("INF001", "Pemrograman Dasar", "B", dosen1, "E.02.07", "Senin",
+                    timeFormat.parse("08:00"), 3);
+            mataKuliahManager.addMK("INF002", "Struktur Data", "A", dosen2, "D.03.02", "Selasa",
+                    timeFormat.parse("14:00"), 2);
+            mataKuliahManager.addMK("INF003", "Basis Data", "C", dosen3, "E.02.08", "Rabu",
+                    timeFormat.parse("10:00"), 3);
+            mataKuliahManager.addMK("INF004", "Jaringan Komputer", "A", dosen4, "D.03.01", "Kamis",
+                    timeFormat.parse("13:00"), 2);
+            mataKuliahManager.addMK("INF005", "Sistem Operasi", "B", dosen5, "E.02.09", "Jumat", timeFormat.parse("09:00"), 3);
+
+        } catch (Exception e) {
+            System.out.println("Error adding Dosen: " + e.getMessage());
+        }
+        
+
+
     }
 }
