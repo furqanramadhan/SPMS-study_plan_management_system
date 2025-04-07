@@ -73,6 +73,7 @@ public class GenerateDummyData {
             ArrayList<MataKuliah> listMK1 = new ArrayList<>();
             listMK1.add(mataKuliahManager.getMK("INF001"));
             listMK1.add(mataKuliahManager.getMK("INF002"));
+            // System.out.println("List MK1: " + listMK1);
             krsManager.ajukanKRS(mhs1, 1, listMK1);
             
             ArrayList<MataKuliah> listMK2 = new ArrayList<>();
@@ -86,6 +87,7 @@ public class GenerateDummyData {
             krsManager.ajukanKRS(mhs3, 1, listMK3);
         } catch (Exception e) {
             System.out.println("Error adding KRS: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

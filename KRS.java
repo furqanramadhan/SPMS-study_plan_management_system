@@ -8,6 +8,7 @@ public class KRS{
 
     public KRS(Mahasiswa mahasiswa, int semester) {
         this.mahasiswa = mahasiswa;
+        this.mataKuliah = new ArrayList<MataKuliah>();
     }
     
     public Mahasiswa getMahasiswa() {
