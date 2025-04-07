@@ -69,6 +69,7 @@ Describes the system functionalities available to different users:
 ### 🗂 Class Diagram
 
 The class diagram includes key entities such as `Mahasiswa`, `Dosen`, `MataKuliah`, `KRS`, and manager classes like `AdminManager`, `KRSManager`, and `PerwalianManager`.
+![Class Diagram](diagrams/spms-class-diagram.png)
 
 ---
 
