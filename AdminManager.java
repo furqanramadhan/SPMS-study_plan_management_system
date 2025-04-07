@@ -320,6 +320,133 @@ public class AdminManager implements IAdmin {
                     }
                     break;
 
+                case 14:
+                    System.out.print("NPM Mahasiswa: ");
+                    String npmPerwalian = scanner.nextLine();
+                    Mahasiswa mahasiswaPerwalian = managementMahasiswa.getMahasiswa(npmPerwalian);
+                    if (mahasiswaPerwalian == null) {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                        break;
+                    }
+                    System.out.print("NIP Dosen: ");
+                    String nipPerwalian = scanner.nextLine();
+                    Dosen dosenPerwalian = managementDosen.getDosen(nipPerwalian);
+                    if (dosenPerwalian == null) {
+                        System.out.println("Dosen tidak ditemukan.");
+                        break;
+                    }
+                    managementPerwalian.addPerwalian(mahasiswaPerwalian, dosenPerwalian);
+                    break;
+
+                case 15:
+                    System.out.print("NPM Mahasiswa: ");
+                    String npmPerwalianUpdate = scanner.nextLine();
+                    Mahasiswa mahasiswaPerwalianUpdate = managementMahasiswa.getMahasiswa(npmPerwalianUpdate);
+                    if (mahasiswaPerwalianUpdate == null) {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                        break;
+                    }
+                    System.out.print("NIP Dosen: ");
+                    String nipPerwalianUpdate = scanner.nextLine();
+                    Dosen dosenPerwalianUpdate = managementDosen.getDosen(nipPerwalianUpdate);
+                    if (dosenPerwalianUpdate == null) {
+                        System.out.println("Dosen tidak ditemukan.");
+                        break;
+                    }
+                    managementPerwalian.updatePerwalian(mahasiswaPerwalianUpdate, dosenPerwalianUpdate);
+                    break;
+                case 16:
+                    System.out.print("NPM Mahasiswa: ");
+                    String npmPerwalianDelete = scanner.nextLine();
+                    Mahasiswa mahasiswaPerwalianDelete = managementMahasiswa.getMahasiswa(npmPerwalianDelete);
+                    if (mahasiswaPerwalianDelete == null) {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                        break;
+                    }
+                    managementPerwalian.deletePerwalian(mahasiswaPerwalianDelete);
+                    break;
+                case 17:
+                    System.out.print("NPM Mahasiswa: ");
+                    String npmKRS = scanner.nextLine();
+                    Mahasiswa mahasiswaKRS = managementMahasiswa.getMahasiswa(npmKRS);
+                    if (mahasiswaKRS == null) {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                        break;
+                    }
+                    
+                    ArrayList<KRS> krsList = managementKRS.getKRS(mahasiswaKRS);
+                    if (krsList == null || krsList.isEmpty()) {
+                        System.out.println("KRS tidak ditemukan.");
+                        break;
+                    }
+                    System.out.println("Daftar KRS untuk Mahasiswa " + mahasiswaKRS.getNama() + ":");
+                    for (KRS krs : krsList) {
+                        System.out.println(krs.toString());
+                    }
+
+                    System.out.print("Pilih Semester KRS yang ingin diupdate: ");
+                    int semesterKRS = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+                    KRS krsToUpdate = null;
+                    for (KRS krs : krsList) {
+                        if (krs.getSemester() == semesterKRS) {
+                            krsToUpdate = krs;
+                            break;
+                        }
+                    }
+                    if (krsToUpdate == null) {
+                        System.out.println("KRS untuk semester " + semesterKRS + " tidak ditemukan.");
+                        break;
+                    }
+
+                    System.out.println("KRS untuk semester " + semesterKRS + ":");
+                    System.out.println(krsToUpdate.toString());
+
+                    System.out.println("1. Tambah Mata Kuliah");
+                    System.out.println("2. Hapus Mata Kuliah");
+                    System.out.print("Pilih opsi: ");
+                    int opsiKRS = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    if (opsiKRS == 1) {
+                        System.out.print("Kode MK: ");
+                        String kodeMKKRS = scanner.nextLine();
+                        MataKuliah mataKuliahKRS = managementMK.getMK(kodeMKKRS);
+                        if (mataKuliahKRS == null) {
+                            System.out.println("Mata Kuliah tidak ditemukan.");
+                            break;
+                        }
+                        krsToUpdate.tambahMataKuliah(mataKuliahKRS);
+                        System.out.println("Mata Kuliah " + mataKuliahKRS.getNamaMK() + " telah ditambahkan ke KRS.");
+                    } else if (opsiKRS == 2) {
+                        System.out.print("Index Mata Kuliah yang ingin dihapus: ");
+                        int index = scanner.nextInt();
+                        krsToUpdate.hapusMataKuliah(index);
+                        System.out.println("Mata Kuliah pada index " + index + " telah dihapus dari KRS.");
+                    } else {
+                        System.out.println("Opsi tidak valid.");
+                    }   
+                    break;
+                
+                    case 18:
+                    System.out.print("NPM Mahasiswa: ");
+                    String npmKRSView = scanner.nextLine();
+                    Mahasiswa mahasiswaKRSView = managementMahasiswa.getMahasiswa(npmKRSView);
+                    if (mahasiswaKRSView == null) {
+                        System.out.println("Mahasiswa tidak ditemukan.");
+                        break;
+                    }
+                    ArrayList<KRS> krsListView = managementKRS.getKRS(mahasiswaKRSView);
+                    if (krsListView == null || krsListView.isEmpty()) {
+                        System.out.println("KRS tidak ditemukan.");
+                        break;
+                    }
+                    System.out.println("Daftar KRS untuk Mahasiswa " + mahasiswaKRSView.getNama() + ":");
+                    for (KRS krs : krsListView) {
+                        System.out.println(krs.toString());
+                    }
+                    break;
+                
                 case 19:
                     System.out.println("Keluar dari menu admin.");
                     return;

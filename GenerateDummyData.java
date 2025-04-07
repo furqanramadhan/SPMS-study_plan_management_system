@@ -62,8 +62,5 @@ public class GenerateDummyData {
         } catch (Exception e) {
             System.out.println("Error adding Dosen: " + e.getMessage());
         }
-        
-
-
     }
 }
