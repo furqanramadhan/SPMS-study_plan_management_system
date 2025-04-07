@@ -55,7 +55,7 @@ The purpose of this application is to provide a centralized system that allows a
 ### ⚙️ Component Diagram
 
 The component diagram shows how different modules such as UI, business logic, and data management interact within the system.
-![Component Diagram](diagrams/component-diagram.png)
+![Component Diagram](diagrams/spms-component-diagram.png)
 
 ### 👤 Use Case Diagram
 
