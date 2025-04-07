@@ -63,7 +63,6 @@ public class GenerateDummyData {
         } catch (Exception e) {
             System.out.println("Error adding Dosen: " + e.getMessage());
         }
-
         // Create dummy data for KRS
         try {
             KRSManager krsManager = new KRSManager();

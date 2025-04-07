@@ -34,11 +34,12 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
         return totalSKS;
     }
 
+    // Implementation of IManagementKRS
     @Override
-    public ArrayList<KRS> getKRS(Mahasiswa mahasiswa){
-        ArrayList<KRS> result = new ArrayList<KRS>();
+    public ArrayList<KRS> getKRS(Mahasiswa mahasiswa) {
+        ArrayList<KRS> result = new ArrayList<>();
         for (KRS krs : listKRS) {
-            if(krs.getMahasiswa().getNpm().equals(mahasiswa.getNpm())){
+            if (krs.getMahasiswa().getNpm().equals(mahasiswa.getNpm())) {
                 result.add(krs);
             }
         }
@@ -57,11 +58,16 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
         listKRS.add(krs); // Add new KRS if not found
     }
 
+    // Implementation of IKRSApproval
     @Override
     public ArrayList<KRS> getPengajuan(ArrayList<Mahasiswa> mahasiswaList) {
         ArrayList<KRS> result = new ArrayList<>();
         for (Mahasiswa mahasiswa : mahasiswaList) {
-            result.addAll(getKRS(mahasiswa)); // Reuse the getKRS method
+            for (KRS krs : listKRS) {
+                if (krs.getMahasiswa().getNpm().equals(mahasiswa.getNpm()) && !krs.getStatusKRS()) {
+                    result.add(krs); // Add pending KRS
+                }
+            }
         }
         return result;
     }
@@ -82,7 +88,7 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             }
         }
     }
-    
+    // Implementation of ISubmitKRS
     @Override
     public void ajukanKRS(Mahasiswa mahasiswa, int semester, ArrayList<MataKuliah> listMK) {
         KRS newKRS = new KRS(mahasiswa, semester);
@@ -90,6 +96,8 @@ public class KRSManager implements IManagementKRS, IKRSApproval, ISubmitKRS {
             newKRS.tambahMataKuliah(mk);
         }
         updateKRS(newKRS);
+        System.out.println("KRS berhasil diajukan untuk mahasiswa: " + mahasiswa.getNama() + " (NPM: " + mahasiswa.getNpm() + ")" + " pada semester " + semester);
+
     }
 
     @Override
