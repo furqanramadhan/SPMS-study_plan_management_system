@@ -1,3 +1,5 @@
 *.class
 *.exe
 UjiCoba.java
+package.bluej
+*.bluej
