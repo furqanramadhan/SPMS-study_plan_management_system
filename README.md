@@ -64,11 +64,11 @@ Describes the system functionalities available to different users:
 - Mahasiswa: view courses, submit KRS
 - Dosen Wali: review and approve/reject KRS
 - Admin: full management access
-  ![Use Case Diagram](diagrams/spms-use-case-diagram.png)
+![Use Case Diagram](diagrams/spms-use-case-diagram.png)
 
 ### 🗂 Class Diagram
 
-The class diagram includes key entities such as `Mahasiswa`, `Dosen`, `MataKuliah`, `KRS`, and manager classes like `AdminManager`, `KRSManager`, and `PerwalianManager`.
+The class diagram includes key entities such as `Mahasiswa`, `Dosen`, `MataKuliah`, `KRS`, and manager classes like `AdminManager`, `KRSManager`, and `PerwalianManager`. `Right click` for zoom into details
 ![Class Diagram](diagrams/spms-class-diagram.png)
 
 ---
