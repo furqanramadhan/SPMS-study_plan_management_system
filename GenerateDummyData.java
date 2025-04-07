@@ -11,7 +11,7 @@ public class GenerateDummyData {
         dosenManager.addDosen("0746102", "Prof. Dr. Taufik Fuadi Abidin, S.Si., M.Tech.", 'L');
         dosenManager.addDosen("0746103", "Alim Misbullah, S.Si., M.S.", 'L');
         dosenManager.addDosen("0746104", "Kikye Martiwi Sukiakhy, ST., M.Kom.", 'P');
-        dosenManager.addDosen("0746105", "r. Rahmad Dawood, S.Kom, M.Sc., IPM., ASEAN Eng., APEC Eng.", 'L');
+        dosenManager.addDosen("0746105", "Ir. Rahmad Dawood, S.Kom, M.Sc., IPM., ASEAN Eng., APEC Eng.", 'L');
         dosenManager.addDosen("0746106", "Dalila Husna Yunardi, B.Sc., M.Sc.", 'P');
 
         // Create dummy data for Mahasiswa
@@ -35,10 +35,10 @@ public class GenerateDummyData {
 
         // Create dummy data for Perwalian
         PerwalianManager perwalianManager = new PerwalianManager();
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010001"), dosenManager.getDosen("074601"));
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010002"), dosenManager.getDosen("074602"));
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010013"), dosenManager.getDosen("074603"));
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2208107010010"), dosenManager.getDosen("074604"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010001"), dosenManager.getDosen("0746101"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010002"), dosenManager.getDosen("0746102"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010013"), dosenManager.getDosen("0746103"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2208107010010"), dosenManager.getDosen("0746104"));
 
         // Create dummy data for MataKuliah
 
