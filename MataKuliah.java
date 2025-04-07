@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class MataKuliah {
     private String kodeMK;
@@ -10,6 +11,7 @@ public class MataKuliah {
     private Date waktu;
     private int sks;
     private int peserta;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
     public MataKuliah(String kodeMK, String namaMK, int sks){
         this.kodeMK = kodeMK;
@@ -101,7 +103,7 @@ public class MataKuliah {
                "Dosen: " + dosen + "\n" +
                "Ruang: " + ruang + "\n" +
                "Hari: " + hari + "\n" +
-               "Waktu: " + waktu + "\n" +
+               "Waktu: " + dateFormat.format(waktu) + "\n" +
                "SKS: " + sks + "\n";
     }
 }
