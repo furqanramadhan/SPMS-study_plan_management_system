@@ -3,3 +3,5 @@
 UjiCoba.java
 package.bluej
 *.bluej
+*.jar
+*.ctxt
