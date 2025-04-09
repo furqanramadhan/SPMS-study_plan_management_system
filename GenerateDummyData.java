@@ -22,7 +22,7 @@ public class GenerateDummyData {
             mahasiswaManager.addMahasiswa("2108107010002", "Bob Alexander", 'L', dateFormat.parse("2021-02-02"));
             mahasiswaManager.addMahasiswa("2108107010003", "Charlie Wijaya", 'L', dateFormat.parse("2021-03-03"));
             mahasiswaManager.addMahasiswa("2108107010010", "Diana Putri", 'P', dateFormat.parse("2021-04-04"));
-            mahasiswaManager.addMahasiswa("2108107010013", "Eve Natalia", 'P', dateFormat.parse("2021-05-05"));
+            mahasiswaManager.addMahasiswa("2108107010011", "Eve Natalia", 'P', dateFormat.parse("2021-05-05"));
             mahasiswaManager.addMahasiswa("2208107010010", "Franky Setiawan", 'L', dateFormat.parse("2022-06-06"));
             mahasiswaManager.addMahasiswa("2208107010018", "Grace Amelia", 'P', dateFormat.parse("2022-07-07"));
             mahasiswaManager.addMahasiswa("2308107010041", "Hank Jonathan", 'L', dateFormat.parse("2023-08-08"));
@@ -37,18 +37,23 @@ public class GenerateDummyData {
         PerwalianManager perwalianManager = new PerwalianManager();
         perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010001"), dosenManager.getDosen("0746101"));
         perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010002"), dosenManager.getDosen("0746102"));
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010013"), dosenManager.getDosen("0746103"));
-        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2208107010010"), dosenManager.getDosen("0746104"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010003"), dosenManager.getDosen("0746103"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010010"), dosenManager.getDosen("0746104"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2108107010011"), dosenManager.getDosen("0746105"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2208107010018"), dosenManager.getDosen("0746106"));
+        perwalianManager.addPerwalian(mahasiswaManager.getMahasiswa("2308107010041"), dosenManager.getDosen("0746107"));
+
 
         // Create dummy data for MataKuliah
 
         MataKuliahManager mataKuliahManager = new MataKuliahManager();
         try {
-            Dosen dosen1 = dosenManager.getDosen("074601");
-            Dosen dosen2 = dosenManager.getDosen("074602");
-            Dosen dosen3 = dosenManager.getDosen("074603");
-            Dosen dosen4 = dosenManager.getDosen("074604");
-            Dosen dosen5 = dosenManager.getDosen("074605");
+            Dosen dosen1 = dosenManager.getDosen("0746101");
+            Dosen dosen2 = dosenManager.getDosen("0746102");
+            Dosen dosen3 = dosenManager.getDosen("0746103");
+            Dosen dosen4 = dosenManager.getDosen("0746104");
+            Dosen dosen5 = dosenManager.getDosen("0746105");
+            Dosen dosen6 = dosenManager.getDosen("0746106");
 
             mataKuliahManager.addMK("INF001", "Pemrograman Dasar", "B", dosen1, "E.02.07", "Senin",
                     timeFormat.parse("08:00"), 3);
@@ -58,7 +63,9 @@ public class GenerateDummyData {
                     timeFormat.parse("10:00"), 3);
             mataKuliahManager.addMK("INF004", "Jaringan Komputer", "A", dosen4, "D.03.01", "Kamis",
                     timeFormat.parse("13:00"), 2);
-            mataKuliahManager.addMK("INF005", "Sistem Operasi", "B", dosen5, "E.02.09", "Jumat", timeFormat.parse("09:00"), 3);
+            mataKuliahManager.addMK("INF005", "Sistem Operasi", "B", dosen5, "E.02.09", "Jumat",
+                    timeFormat.parse("09:00"), 3);
+            mataKuliahManager.addMK("INF006", "Analisis Algoritma", "A", dosen6, "D.03.03", "Sabtu", timeFormat.parse("11:00"), 2);
 
         } catch (Exception e) {
             System.out.println("Error adding Dosen: " + e.getMessage());
@@ -68,7 +75,7 @@ public class GenerateDummyData {
             KRSManager krsManager = new KRSManager();
             Mahasiswa mhs1 = mahasiswaManager.getMahasiswa("2108107010001");
             Mahasiswa mhs2 = mahasiswaManager.getMahasiswa("2108107010002");
-            Mahasiswa mhs3 = mahasiswaManager.getMahasiswa("2108107010013");
+            Mahasiswa mhs3 = mahasiswaManager.getMahasiswa("2108107010011");
 
             ArrayList<MataKuliah> listMK1 = new ArrayList<>();
             listMK1.add(mataKuliahManager.getMK("INF001"));
